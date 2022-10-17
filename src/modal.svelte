@@ -1,0 +1,42 @@
+<script>
+    import PersonForm from "./AddPersonForm.svelte"
+    export let showModal = false
+    export let isPromo = false
+</script>
+
+{#if showModal}
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="backdrop" class:promo={isPromo} on:click|self>
+        <div class="modal">
+            <PersonForm />
+        </div>
+    </div>
+{/if}
+
+
+<style>
+    .backdrop{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal{
+        padding: 10px;
+        border-radius: 10px;
+        min-width: 400px;
+        width: 50%;
+        margin: 10% auto;
+        text-align: center;
+        background: white;
+    }
+    .promo .modal{
+        background: crimson;
+        color: white;
+    }
+</style>
